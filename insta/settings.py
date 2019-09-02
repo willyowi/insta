@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'clonemain',
     'users',
     'crispy_forms',
+    'bootstrap3',
 
 
 
