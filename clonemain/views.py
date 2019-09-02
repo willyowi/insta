@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, DeleteView
 from .models import Post
+import datetime as dt
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.models import User
 
