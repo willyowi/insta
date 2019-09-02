@@ -1,0 +1,80 @@
+{% extends 'clonemain/base.html' %}
+{% block content %}
+<div class="container m-t-100">
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="row row d-flex justify-content-center">
+                <div class="col-md-9 ">
+                    <!-- Card -->
+                    <div class="card-header">
+                        <div class="view overlay">
+                            <img src="{{ post.author.profile.image.url }}" class="img-fluid z-depth-1 rounded-circle   "
+                                alt="Responsive image" width="40">
+                            <a href="#">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card  mb-3">
+
+                        <!-- Card image -->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!-- Card content -->
+                        <div class="card-body ">
+
+                            <!-- Title -->
+                            <h4 class="card-title" style="font-family: 'Billabong'">{{ object.title }}</h4>
+                            <!-- Text -->
+                            <p style="font-family: 'Billabong'">{{ object.author }} on
+                                {{ object.date_posted | date:'d N Y H:i' }} </p>
+                            <p> {{ object.desription }} </p>
+                            <!-- Button -->
+                            <a class="px-2 fa-lg li-ic"><i class="far fa-heart fa-lg p-2"></i></a>
+                            <a class="px-2 fa-lg li-ic"><i class="far fa-comment fa-lg"></i></a>
+                            <br>
+                            {% if object.author == user %}
+                                <a class="btn btn-secondary btn-sm" href=" {% url 'post-update' object.id %} ">Update</a>
+                                <a class="btn btn-danger btn-sm" href=" {% url 'post-delete' object.id %} ">Delete</a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3 d-none d-md-block">
+            <!-- Card -->
+            <div class="card position-fixed">
+
+                <!-- Card content -->
+                
+                <div class="card-body">
+
+                    <!-- Title -->
+                    <h4 class="card-title" style="font-family: 'Billabong'">{{ object.title }}</h4>
+                    <!-- Text -->
+                    <p style="font-family: 'Billabong'"> By {{ object.author }} on {{ object.date_posted }} </p>
+                    <p> {{ object.content }} </p>
+                    <!-- Button -->
+                    <!-- <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a> -->
+
+                </div>
+                
+            </div>
+            <!-- Card -->
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
