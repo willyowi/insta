@@ -3,6 +3,9 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from .models import Post
+from .models import NewsLetterRecipients
+from .forms import NewsLetterForm,NewPostForm
+from .email import send_welcome_email
 
 # Create your views here.
 def daily_post(request):
@@ -10,7 +13,7 @@ def daily_post(request):
     clonemain = Post.todays_post()
 
     if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
+        #form = NewsLetterForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
@@ -25,7 +28,7 @@ def daily_post(request):
     else:
         form = NewsLetterForm()
     
-    return render(request, 'all-post/today-post.html', {"date": date,"news":news,"letterForm":form})
+    return render(request, 'all-post/today-post.html', {"date": date,"clonemain":clonemain,"letterForm":form})
 
 
 def convert_dates(dates):
@@ -54,6 +57,14 @@ def search_results(request):
         return render(request, 'all-post/search.html',{"message":message})
 
 
+
+@login_required(login_url='/accounts/login/')
+def post(request,article_id):
+    try:
+        article = Post.objects.get(id = post_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-post/post.html", {"post":post})
 
 
 @login_required(login_url='/accounts/login/')

@@ -33,19 +33,19 @@ class Post(models.Model):
     #   methods
     @classmethod
     def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
+        clonemain = cls.objects.filter(title__icontains=search_term)
         return clonemain
 
-     @classmethod
+    @classmethod
     def days_clonemania(cls):
         today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
+        clonemain = cls.objects.filter(pub_date__date = today)
         return clonemain    
 
     @classmethod
     def todays_post(cls):
         today = dt.date.today()
-        news = cls.objects.filter(pub_date__date = today)
+        clonemain = cls.objects.filter(pub_date__date = today)
         return clonemain    
 
 

@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns=[
-    url(r'^$',views.news_of_day,name='postToday'),
+    url(r'^$',views.daily_post,name='postToday'),
     # url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews')·,
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^post/(\d+)',views.post,name ='post'),
