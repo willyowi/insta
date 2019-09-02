@@ -1,0 +1,3 @@
+Hello {{name}}
+
+ Here is your favourite paiining sites you wish to purchase https://ogalaa.herokuapp.com/

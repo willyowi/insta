@@ -20,4 +20,35 @@ class Post(models.Model):
     #adding timestaps for dates for post
     pub_date = models.DateTimeField(auto_now_add=True)
     #image uploads to article
-    article_image = models.ImageField(upload_to = 'posts/', blank=True)        
+    article_image = models.ImageField(upload_to = 'posts/', blank=True) 
+
+
+    def __str__(self):
+        return self.title
+        
+    def save_Post(self):
+        self.save() 
+
+
+    #   methods
+    @classmethod
+    def search_by_title(cls,search_term):
+        news = cls.objects.filter(title__icontains=search_term)
+        return clonemain
+
+     @classmethod
+    def days_clonemania(cls):
+        today = dt.date.today()
+        news = cls.objects.filter(pub_date__date = today)
+        return clonemain    
+
+    @classmethod
+    def todays_post(cls):
+        today = dt.date.today()
+        news = cls.objects.filter(pub_date__date = today)
+        return clonemain    
+
+
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30)
+    email = models.EmailField()                 
