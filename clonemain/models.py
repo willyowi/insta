@@ -51,4 +51,32 @@ class Post(models.Model):
 
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
-    email = models.EmailField()                 
+    email = models.EmailField()   
+
+
+
+class Profile(models.Model):
+    profile = models.ForeignKey(User,on_delete=models.CASCADE, null = True)
+    photo = models.ImageField(upload_to = 'profile/', null = True)
+    bio = models.TextField(max_length=500)
+
+    def __str__(self):
+     return self.bio
+    def save_profile(self):
+        self.save()
+    def delete_profile(self):
+        self.delete()
+
+
+
+class Comment(models.Model):
+    image=models.ForeignKey(Post,on_delete=models.CASCADE),
+    comment_owner=models.ForeignKey(User,blank=True,null=True,on_delete=models.CASCADE),
+    comment_content=models.CharField(max_length=300,blank=True)
+    
+    @classmethod
+    def get_comments(cls,img_id):
+        comments=cls.objects.filter(pk=img_id).all()
+        return comments
+    def __str__(self):
+        return self.Comment_content

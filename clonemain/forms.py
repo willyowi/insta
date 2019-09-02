@@ -14,3 +14,18 @@ class NewPostForm(forms.ModelForm):
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['profile'] 
+
+
+class VoteForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['link','description','profile','image','title']    
+
+class NewComment(forms.ModelForm):
+   class Meta:
+       model=Comment
+       fields=['comment_content']               

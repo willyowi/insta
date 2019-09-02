@@ -1,11 +1,16 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
+from .models import Profile,Comment
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from .models import NewsLetterRecipients
 from .forms import NewsLetterForm,NewPostForm
 from .email import send_welcome_email
+
+from .forms import ProfileForm,VoteForm,NewComment
+
+
 
 # Create your views here.
 def daily_post(request):
@@ -81,4 +86,50 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
+    
+
+
+def profile(request):
+    current_user = request.user
+    projects = Project.objects.filter(profile=current_user).all()
+    profile = Profile.objects.filter(profile=current_user)
+
+    if len(profile)<1:
+        profile = "No profile"
+    else:
+        profile = Profile.objects.get(profile=current_user)
+
+    return render(request, 'profile/profile.html',{'projects':projects,'profile':profile,'user':current_user})
+
+
+def edit_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit = False)
+            profile.project = current_user
+            profile.save()
+            messages.success(request,'Your account has been updated')
+        return redirect('Profile')
+    else:
+        form = ProfileForm()
+    return render(request,'profile/edit_profile.html',{'form':form})
+
+
+def vote_project(request, project_id):
+    project = Project.objects.get(id=project_id)
+    rating = round(((project.userinterface)/2),2)
+    if request.method == 'POST':
+        form = VoteForm(request.POST)
+        if form.is_valid:
+            if project.userinterface == 1:
+                project.userinterface = int(request.POST['userinterface'])
+            else:
+                project.userinterface = (project.userinterface + int(request.POST['userinterface']))/2
+    else:
+        form = VoteForm()
+    return render(request,'vote.html',{'form':form,'project':project,'rating':rating})
+
+
 

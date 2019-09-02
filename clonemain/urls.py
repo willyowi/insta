@@ -13,7 +13,13 @@ urlpatterns=[
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^post/(\d+)',views.post,name ='post'),
     # URLConf for new article view
-    url(r'^new/post$', views.new_post, name='new-post')
+    url(r'^new/post$', views.new_post, name='new-post'),
+    url(r'^profile/',views.profile,name = 'Profile'),
+    url(r'^edit/profile/$',views.edit_profile,name = 'edit-profile'),
+    url(r'^project-vote/(\d+)',views.vote_project,name = 'project-vote'),
+
+
+
 
 ]
 if settings.DEBUG:
