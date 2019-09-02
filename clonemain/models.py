@@ -20,7 +20,7 @@ class Post(models.Model):
     #adding timestaps for dates for post
     pub_date = models.DateTimeField(auto_now_add=True)
     #image uploads to article
-    article_image = models.ImageField(upload_to = 'posts/', blank=True) 
+    post_image = models.ImageField(upload_to = 'posts/', blank=True) 
 
 
     def __str__(self):

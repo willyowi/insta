@@ -8,5 +8,4 @@ class PostAdmin(admin.ModelAdmin):
 
 #admin.site.register(Editor)
 admin.site.register(Post,PostAdmin)
-admin.site.register(tags
-)
+admin.site.register(tags)
