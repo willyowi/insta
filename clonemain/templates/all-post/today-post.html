@@ -1,4 +1,4 @@
-<div class="container" style="background-color: #C13584;">
+<div class="container" style="background-color:#833AB4;">
 {% extends 'all-post/base.html' %}
 {% load bootstrap3 %}
 {% block content %}
@@ -9,12 +9,12 @@
     {% for clonemain_item in clonemain %}
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <h5 style="font-size: 15px" class="text-center hd">{{ clonemain_item.title }}</h5>
+            <h5 style="font-size: 15px" class="text-center hd"  >{{ clonemain_item.title }}</h5>
         
-            <h4 style="font-style: italic; font-size: 13px;" class="text-left hb">{{ clonemain_item.post}}</h4>
+            <h4 style="font-style: italic; font-size: 13px;" class="text-left hb" style="color: white">{{ clonemain_item.post}}</h4>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{ clonemain_item.post_image.url}}" class="img-responsive" alt="Image">
+        <div class="col-xs-4 col-sm- col-md-4 col-lg-4">
+            <img src="{{ clonemain_item.post_image.url}}" class="img-responsive" alt="Image"  >
 ​
         </div>
     </div>
