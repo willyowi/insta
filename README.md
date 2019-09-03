@@ -20,8 +20,8 @@ A clone of the worlds famous instagram app
 
 # DISPLAY
 
-## landing page :book:
-![screenshot](galascore/static/photos/sign.png)
+## sign up :book:
+![screenshot](clonemain/static/photos/sign.png)
 <!-- ## category search 
 ![screenshot](galascore/static/photos/search.png)
 ## search results
