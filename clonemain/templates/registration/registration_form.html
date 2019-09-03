@@ -1,11 +1,19 @@
+<div style="background-color: black">
 {%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
+    <br>
+    <br>
+    <br>
     <div class="row">
 
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
+            <h1 class="text-center" style="color: blanchedalmond">Hello! &#128539 Register here</h1>
+            <br>
+            <br>
+            <br>
             {% if form.errors %}
             <p>incorrect details</p>
             {% endif %}
@@ -38,3 +46,4 @@
 </div>
 
 {% endblock %}
+</div>

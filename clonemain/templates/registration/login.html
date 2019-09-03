@@ -1,15 +1,19 @@
+<div style="background-color: black">
 {%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
   
-    <div class="row">
+    <div class="row"> <br>
+        <br>
+        <br>
+        <br>
 
         <div class="col-md-4"></div>
         <div class="col-md-4">
             {% if form.errors %}
             <p> Password or Username is incorrect </p>
-            {% endif %}
+            {% endif %} 
             <div class="panel panel-default">
 
                 <div class="panel-heading">
@@ -23,8 +27,8 @@
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-outline-primary btn-lg btn-block" value="Login">
-                            Don't have an account?
-                            <a href="/accounts/register/" style="font-size: 20px">Sign Up</a>
+                        Dont have account yet?
+                            <a href="/accounts/register/" style="font-size: 20px">Register</a>
                         </div>
 
                         <input type="hidden" name="next" value="{{next}}">
@@ -40,5 +44,19 @@
         <div class="col-md-4"></div>
     </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
+<marquee behavior="" direction="" style="color: blanchedalmond; font-size: 30px " class="text-center" width=900px >This is a decoy app Gotta sign-up  first to enjoy&#128540</marquee>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<
 {% endblock %}
+
+</div>
