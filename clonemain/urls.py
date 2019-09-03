@@ -7,9 +7,6 @@ urlpatterns=[
     url(r'^$',views.index,name='indexPage'),
     url(r'^profile/',views.profile,name = 'Profile'),
     url(r'^edit/profile/$',views.edit_profile,name = 'edit-profile'),
-<<<<<<< HEAD
-    url(r'^post-vote/(\d+)',views.vote_post,name = 'post-vote'),
-=======
     url(r'^projects/(\d+)',views.project,name ='projects'),
     url(r'^new/project$', views.new_project, name='new-project'),
     url(r'^search/', views.search_results, name='search_results'),
@@ -19,7 +16,6 @@ urlpatterns=[
 
 
 
->>>>>>> revert
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

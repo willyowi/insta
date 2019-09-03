@@ -4,62 +4,6 @@ from .models import Project,Profile,Comment
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
-from .models import Post
-from .models import NewsLetterRecipients
-from .forms import NewsLetterForm,NewPostForm
-from .email import send_welcome_email
-
-from .forms import ProfileForm,VoteForm,NewComment, NewsLetterForm, NewPostForm
-
-
-
-# Create your views here.
-def daily_post(request):
-    date = dt.date.today()
-    clonemain = Post.todays_post()
-
-    if request.method == 'POST':
-        form = NewsLetterForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['your_name']
-            email = form.cleaned_data['email']
-
-            recipient = NewsLetterRecipients(name = name,email =email)
-            
-            recipient.save()
-            # send_welcome_email
-            send_welcome_email(name,email)
-            
-            HttpResponseRedirect('daily_post')
-    else:
-        form = NewsLetterForm()
-    
-    return render(request, 'all-post/today-post.html', {"date": date,"clonemain":clonemain,"form":form})
-
-
-def convert_dates(dates):
-
-    # Function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
-
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
-
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day 
-
-
-def search_results(request):
-
-    if 'post' in request.GET and request.GET["post"]:
-        search_term = request.GET.get("post")
-        searched_posts = Post.search_by_title(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'all-post/search.html',{"message":message,"posts": searched_posts})
-
-=======
 from .forms import ProjectForm,ProfileForm,VoteForm,NewComment
 
 # Create your views here.
@@ -89,7 +33,6 @@ def project(request,project_id):
             comment.save()
           
             messages.success(request,f'Comment made') 
->>>>>>> revert
     else:
         form=NewComment()
     comments=Comment.get_comments(project_id)
@@ -160,21 +103,6 @@ def search_results(request):
 
         return render(request, 'search.html',{"message":message,"projects": searched_projects})
 
-<<<<<<< HEAD
-def vote_post(request, project_id):
-    post = Post.objects.get(id=project_id)
-    rating = round(((post.userinterface)/2),2)
-    if request.method == 'POST':
-        form = VoteForm(request.POST)
-        if form.is_valid:
-            if post.userinterface == 1:
-                post.userinterface = int(request.POST['userinterface'])
-            else:
-                post.userinterface = (post.userinterface + int(request.POST['userinterface']))/2
-    else:
-        form = VoteForm()
-    return render(request,'vote.html',{'form':form,'post':post,'rating':rating})
-=======
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
@@ -186,7 +114,6 @@ def search_project(request,project_id):
     except ObjectDoesNotExist:
         raise Http404()
     return render(request, 'project_details.html', {'project':project})
->>>>>>> revert
 
 
 

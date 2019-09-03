@@ -3,63 +3,6 @@ from django.contrib.auth.models import User
 import datetime as dt
 from tinymce.models import HTMLField
 # Create your models here.
-<<<<<<< HEAD
-class tags(models.Model):
-    name = models.CharField(max_length =30)
-
-    def __str__(self):
-        return self.name
-
-
-class Post(models.Model):
-    title = models.CharField(max_length =100)
-    post = HTMLField()
-    editor = models.ForeignKey(User,on_delete=models.CASCADE)
-    #many to many r-ship= many posts having many tags together
-    tags = models.ManyToManyField(tags)
-    #adding timestaps for dates for post
-    pub_date = models.DateTimeField(auto_now_add=True)
-    #image uploads to article
-    post_image = models.ImageField(upload_to = 'posts/', blank=True)
-    vote=models.PositiveIntegerField(choices=list(zip(range(1,11),range(1, 11))), default=1)
- 
-
-
-    def __str__(self):
-        return self.title
-        
-    def save_Post(self):
-        self.save() 
-
-
-    #   methods
-    @classmethod
-    def search_by_title(cls,search_term):
-        clonemain = cls.objects.filter(title__icontains=search_term)
-        return clonemain
-
-    @classmethod
-    def days_clonemania(cls):
-        today = dt.date.today()
-        clonemain = cls.objects.filter(pub_date__date = today)
-        return clonemain    
-
-    @classmethod
-    def todays_post(cls):
-        today = dt.date.today()
-        clonemain = cls.objects.filter(pub_date__date = today)
-        return clonemain    
-
-
-class NewsLetterRecipients(models.Model):
-    name = models.CharField(max_length = 30)
-    email = models.EmailField()   
-    def save(self):
-        self.save() 
-
-
-=======
->>>>>>> revert
 
 class Profile(models.Model):
     profile = models.ForeignKey(User,on_delete=models.CASCADE, null = True)
