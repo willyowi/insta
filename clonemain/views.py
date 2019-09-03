@@ -18,7 +18,7 @@ def daily_post(request):
     clonemain = Post.todays_post()
 
     if request.method == 'POST':
-        #form = NewsLetterForm(request.POST)
+        form = NewsLetterForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']

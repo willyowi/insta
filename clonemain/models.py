@@ -21,6 +21,8 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     #image uploads to article
     post_image = models.ImageField(upload_to = 'posts/', blank=True) 
+    user=models.PositiveIntegerField(choices=list(zip(range(1,11),range(1, 11))), default=1)
+
 
 
     def __str__(self):
