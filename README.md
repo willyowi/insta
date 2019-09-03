@@ -15,17 +15,17 @@ A clone of the worlds famous instagram app
 | Register first | Input dtails to be validated | view the page upon registration |
 | Update profile | in put profile pic and bio |  submit and view |
 | Create A post | post a pic and add description | 
-| Log Out |
+| Log Out |   | Proceedings Terminated |
 
 
 # DISPLAY
 
 ## landing page :book:
-![screenshot](galascore/static/photos/landing.png)
-## category search 
+![screenshot](galascore/static/photos/sign.png)
+<!-- ## category search 
 ![screenshot](galascore/static/photos/search.png)
 ## search results
-![screenshot](galascore/static/photos/messi.png)
+![screenshot](galascore/static/photos/messi.png) -->
 
 
 
