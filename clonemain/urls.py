@@ -3,20 +3,23 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
-
-
 urlpatterns=[
-    url(r'^$',views.daily_post,name='postToday'),
-    # url(r'^archives/(\d{4}-\d{2}-\d{2})/$',views.past_days_news,name = 'pastNews')·,
-    url(r'^search/', views.search_results, name='search_results'),
-    url(r'^post/(\d+)',views.post,name ='post'),
-    # URLConf for new article view
-    url(r'^new/post$', views.new_post, name='new-post'),
+    url(r'^$',views.index,name='indexPage'),
     url(r'^profile/',views.profile,name = 'Profile'),
     url(r'^edit/profile/$',views.edit_profile,name = 'edit-profile'),
+<<<<<<< HEAD
     url(r'^post-vote/(\d+)',views.vote_post,name = 'post-vote'),
+=======
+    url(r'^projects/(\d+)',views.project,name ='projects'),
+    url(r'^new/project$', views.new_project, name='new-project'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^project-detail/(\d+)',views.search_project,name = 'project-detail'),
+    url(r'^project-vote/(\d+)',views.vote_project,name = 'project-vote'),
+
+
+
+
+>>>>>>> revert
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

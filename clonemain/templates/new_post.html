@@ -1,31 +1,43 @@
-{% load bootstrap3 %} {% load staticfiles %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% load static%}
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <!--link rel="stylesheet" href="{% static 'css/base.css' %}"-->
+    <title> New Post</title>
+    {{form.media}}
+    {% block styles %}
+    
+    {% bootstrap_css %}
 
-  <title>New Post</title>
-  {{form.media}}
-
-{% block styles %} {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
-
+    {% endblock %}
 </head>
 
-<body>
+<body id="san">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8" style="background-color: ">
+                <h2 id="title">Add a post</h2>
+                <form action="{% url 'new-project' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-  <form  action="{%url 'new-post'%}" method="POST" enctype="multipart/form-data">
-    {%csrf_token%}
+                    {% bootstrap_form form %}
+                    <input type="submit" class="btn btn-success btn-md" value="submit">
 
-    {% bootstrap_form  form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
-  </form>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 
-   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  {% bootstrap_javascript %} {% endblock %}
+
+    {% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript%}
+    {% endblock %}
 
 </body>
 
