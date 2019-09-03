@@ -108,7 +108,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit = False)
-            profile.project = current_user
+            profile.post = current_user
             profile.save()
             messages.success(request,'Your account has been updated')
         return redirect('Profile')
@@ -117,19 +117,19 @@ def edit_profile(request):
     return render(request,'profile/edit_profile.html',{'form':form})
 
 
-def vote_project(request, project_id):
-    project = Project.objects.get(id=project_id)
-    rating = round(((project.userinterface)/2),2)
+def vote_post(request, project_id):
+    post = Post.objects.get(id=project_id)
+    rating = round(((post.userinterface)/2),2)
     if request.method == 'POST':
         form = VoteForm(request.POST)
         if form.is_valid:
-            if project.userinterface == 1:
-                project.userinterface = int(request.POST['userinterface'])
+            if post.userinterface == 1:
+                post.userinterface = int(request.POST['userinterface'])
             else:
-                project.userinterface = (project.userinterface + int(request.POST['userinterface']))/2
+                post.userinterface = (post.userinterface + int(request.POST['userinterface']))/2
     else:
         form = VoteForm()
-    return render(request,'vote.html',{'form':form,'project':project,'rating':rating})
+    return render(request,'vote.html',{'form':form,'post':post,'rating':rating})
 
 
 
