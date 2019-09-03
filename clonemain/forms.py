@@ -1,31 +1,21 @@
 from django import forms
-from django.forms import ModelForm, Textarea
-from .models import Post,Comment,Profile
+from .models import Profile, Project,Comment
 
-class NewsLetterForm(forms.Form):
-    your_name = forms.CharField(label='First Name',max_length=30)
-    email = forms.EmailField(label='Email')
-
-    # new post form
-class NewPostForm(forms.ModelForm):
+class ProjectForm(forms.ModelForm):
     class Meta:
-        model = Post
-        exclude = ['editor', 'pub_date']
-        widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
-        }
+        model = Project
+        exclude = ['profile','userinterface']
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        exclude = ['profile'] 
-
-
+        exclude = ['profile']
 class VoteForm(forms.ModelForm):
     class Meta:
-        model = Post
+        model = Project
         exclude = ['link','description','profile','image','title']    
 
 class NewComment(forms.ModelForm):
    class Meta:
-       model = Comment
-       fields=['comment_content']               
+       model=Comment
+       fields=['comment_content']

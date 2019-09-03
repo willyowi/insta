@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% load static %}
 {% load staticfiles %}
 
 {% block content %}
 {{block.super}}
-<!-- #<link rel="stylesheet" href="../static/css/base.css"> -->
+<link rel="stylesheet" href="../static/css/base.css">
 
 <div class="container">
     <div class="row">
@@ -30,10 +30,10 @@
     </div>
     <br><br><br>
     <div class="row">
-        {% for post in posts %}
+        {% for project in projects %}
         <div class="col-md-4">
             <div class="card">
-                <img src="{{post.image.url}}"  alt="Podt" class="img-fluid">
+                <img src="{{project.image.url}}"  alt="Project" class="img-fluid">
             </div>
         </div>
         {% endfor%}

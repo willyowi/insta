@@ -1,65 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <nav class="navbar navbar-inverse  navbar-light" style="background-color: #C13584;">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'postToday' %}" style="color: white">Instagram</a>
-          </div>
-    
-          <!-- Adding a search form  -->
-          <div class="col-sm-4 col-md-4 navbar-right">
-    
-            <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-    
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Article" name="article">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-              </div>
-    
-            </form>
-          </div>
-          <!-- search form end -->
-          <!-- add login form -->
-          <div class="col-sm-6 col-md-6">
-            {% if user.is_authenticated %}
-            <ul>
-              <li class="dropdown">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" 
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'indexPage' %}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'indexPage' %}"><i class="fa fa-houzz"> Home <span class="sr-only">(current)</span></i></a>
+        </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'Profile' %}" ><i class="fa fa-user-circle" style="font-size: 25px;"></i></a>
+          </li>
+          <li class="nav-item dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
                           <span class="caret"></span>
                       </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li>
-                    <a href="{%url 'postToday'%}">Home</a>
-                  </li>
-                  <li>
-                    <a href="{%url 'new-post'%}">Post</a>
-                  </li>
-                  <li>
-                    <a href="/accounts/password/change">Change Password</a>
-                  </li>
-                  <li>
-                    <a href="/logout">Logout</a>
-                  </li>
-                </ul>
+                      <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown" >
+                          <a class="dropdown-item" href="{% url 'new-project' %}">Create Post</a>
+                          <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
+                          <div class="dropdown-divider"></div>
+                          <a  class="dropdown-item" href="/logout">Logout</a>
+                        </div>
               </li>
-            </ul>
             {% else %}
             <li>
-              <a class='btn btn-default' href="/accounts/login">Login</a>
+              <a class='btn btn-default' style="color: aliceblue" href="/accounts/login">Login</a>
             </li>
 
             {% endif %}
-          </div>
-           <!-- end login -->
-        </div>
-      </nav>
-</body>
-</html>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </nav>

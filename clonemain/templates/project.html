@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="col-md-8">
+        </style>
+            <div class="card">
+                    <div class="card-header">
+                            <img src="{{profile.photo.url}}"  style="border-radius: 50%;height:50px; width: 50px;" class="card-img-top" alt="">{{request.user.username}}
+                            <p>{{project.date_posted}}</p>
+                    </div>
+                    <div class="card-body">
+                            <img src="{{project.image.url}}"  class="card-img-top" alt="">
+                            <p><b>description:</b><br>{{project.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                            <a href="/project-vote/{{project.id}}"><i class="fa fa-heart" style="font-size: 40px;">{{project.userinterface}} </a></i>
+                            <a href="#"><i class="fa fa-comment" style="font-size: 40px;"></i></a>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                {% bootstrap_form form%}
+                                <input type="submit" class="btn btn-success btn-lg" value="Add comment">
+                            </form>
+                    {% for comment in comments%}
+                    <p>{{comment.comment_owner.username}}</p>
+                    <p style="overflow-y:scroll">{{comment.comment_content}}</p>
+                     {% endfor %}
+            
+                    </div>
+                </div>
+    </div>
+    </div>
+    {% endblock %}
