@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
     url(r'',include('clonemain.urls')),
-    url(r'^tinymce/', include('tinymce.urls'))
+    url(r'^tinymce/', include('tinymce.urls')),
 
 ]   

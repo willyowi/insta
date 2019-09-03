@@ -1,3 +1,4 @@
+<div class="container" style="background-color: #F56040;">
 {%extends "registration/base.html"%}
 {% load bootstrap3 %}
 {% block content %}
@@ -16,12 +17,13 @@
         </div>
         <div class="panel-body">
 
-          <form  action="/accounts/login/" method="post">
+          <form  action="/accounts/login/" method="post" style="background-color: #E1306C;"  >
             {% csrf_token %}
             {% bootstrap_form form%}
 
             <div class="form-group">
               <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              Dont have an account? You can  <a href="/accounts/register/">sign up</a> 
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
@@ -39,3 +41,4 @@
 </div>
 
 {% endblock %}
+</div>
