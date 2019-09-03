@@ -1,21 +1,21 @@
 ## TITLE
-GALASCORE
+INSTA
 
 ## AUTHOR
 By **wilson owino** :100:
 
 ## DESCRIPTION
-A django personal gallery application that displays my photos for others to see.
-
+A clone of the worlds famous instagram app
 
 
 ## BEHAVIOUR DRIVEN DEVELOPMENT(BDD)
 
 | Behaviour | Input                     | Output                    |
 | --------- | ------------------------- | ------------------------- |
-|Navigate to website| Click on an image | Image is expanded and further details of the image displayed |
-|Navigate to search input| Type in a photo category|Photos of that particular category are displayed|
-
+| Register first | Input dtails to be validated | view the page upon registration |
+| Update profile | in put profile pic and bio |  submit and view |
+| Create A post | post a pic and add description | 
+| Log Out |
 
 
 # DISPLAY
@@ -97,7 +97,6 @@ Open [localhost:8000](http://127.0.0.1:8000/)
 
 
 ## LIVE SITE
-Click [Live site](https://ogalaa.herokuapp.com/) to view the deployed application
 ## KNOWN BUGS
 None
 
@@ -109,4 +108,4 @@ None
 * Scss
 
 ## LICENSE
-[MIT](https://github.com/Willyowi/Galascore/blob/master/LICENSE)
+[MIT](https://github.com/Willyowi/Insta/blob/master/LICENSE)
