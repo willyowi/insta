@@ -86,6 +86,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+SECRET_KEY='+acjtfxzuz_l6!)-)d&6*kl%!%ovpl(ni42(wep=pv)yrp(nv7'
 
 ROOT_URLCONF = 'insta.urls'
 
@@ -112,14 +113,14 @@ WSGI_APPLICATION = 'insta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'gram',
-#         'USER': 'moringa',
-#         'PASSWORD':'sijuinigani',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gram',
+        'USER': 'moringa',
+        'PASSWORD':'sijuinigani',
+    }
+}
 
 
 # Password validation
