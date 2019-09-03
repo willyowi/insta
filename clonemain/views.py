@@ -8,7 +8,7 @@ from .models import NewsLetterRecipients
 from .forms import NewsLetterForm,NewPostForm
 from .email import send_welcome_email
 
-from .forms import ProfileForm,VoteForm,NewComment
+from .forms import ProfileForm,VoteForm,NewComment, NewsLetterForm, NewPostForm
 
 
 
@@ -18,7 +18,7 @@ def daily_post(request):
     clonemain = Post.todays_post()
 
     if request.method == 'POST':
-        #form = NewsLetterForm(request.POST)
+        form = NewsLetterForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['your_name']
             email = form.cleaned_data['email']
@@ -33,7 +33,7 @@ def daily_post(request):
     else:
         form = NewsLetterForm()
     
-    return render(request, 'all-post/today-post.html', {"date": date,"clonemain":clonemain,"letterForm":form})
+    return render(request, 'all-post/today-post.html', {"date": date,"clonemain":clonemain,"form":form})
 
 
 def convert_dates(dates):

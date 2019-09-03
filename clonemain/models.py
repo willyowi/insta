@@ -20,7 +20,9 @@ class Post(models.Model):
     #adding timestaps for dates for post
     pub_date = models.DateTimeField(auto_now_add=True)
     #image uploads to article
-    post_image = models.ImageField(upload_to = 'posts/', blank=True) 
+    post_image = models.ImageField(upload_to = 'posts/', blank=True)
+    vote=models.PositiveIntegerField(choices=list(zip(range(1,11),range(1, 11))), default=1)
+ 
 
 
     def __str__(self):
@@ -52,6 +54,8 @@ class Post(models.Model):
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField()   
+    def save(self):
+        self.save() 
 
 
 

@@ -1,4 +1,3 @@
-<div class="container" style="background-color: #CDE5D7>
 {% extends 'all-post/base.html' %}
 {% load bootstrap3 %}
 {% block content %}
@@ -8,8 +7,8 @@
     
     {% for clonemain_item in clonemain %}
     <div class="row">
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <!-- <h3 style="font-size: 15px" class="text-center hd"  >{{ clonemain_item.post}}</h3> -->
+        <div class="col-xs-2 col-sm-2 col-md-6 col-lg-6">
+            <h3 style="font-size: 15px" class="text-center hd"  >{{ clonemain_item.post}}</h3>
         
         </div>
             
@@ -42,8 +41,36 @@
     </div>       
     </div>
 </div>
+<div class="container">
+        <div class="col-md-8">
+            </style>
+                <div class="card">
+                        <div class="card-header">
+                                <img src="{{profile.photo.url}}"  style="border-radius: 50%;height:50px; width: 50px;" class="card-img-top" alt="">{{request.user.username}}
+                                <p>{{post.pub_date}}</p>
+                        </div>
+                        <div class="card-body">
+                                <img src="{{post.post_image.url}}"  class="card-img-top" alt="">
+                                <p><b>description:</b><br>{{post.post}}</p>
+                        </div>
+                        <div class="card-footer">
+                                <a href="/post-vote/{{post.id}}"><i class="fa fa-heart" style="font-size: 40px;">{{post.vote}} </a></i>
+                                <a href="#"><i class="fa fa-comment" style="font-size: 40px;"></i></a>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    {%csrf_token%}
+                                    {% bootstrap_form form%}
+                                    <input type="submit" class="btn btn-success btn-lg" value="Add comment">
+                                </form>
+                        {% for comment in comments%}
+                        <p>{{comment.comment_owner.username}}</p>
+                        <p style="overflow-y:scroll">{{comment.comment_content}}</p>
+                         {% endfor %}
+                
+                        </div>
+                    </div>
+        </div>
+        </div>
 {% endblock %}
-</div>
 
 
 
